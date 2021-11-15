@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron:  '0 6 * * 1' # Run every monday at 06:00 UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y automake autoconf libtool2
+      - run: ./configure
+      - run: make
+      - run: sudo make install
