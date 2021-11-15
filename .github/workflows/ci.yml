@@ -12,5 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt-get install -y automake autoconf libtool
+      - run: |
+          aclocal
+          autoconf
+          automake --add-missing
       - run: make
       - run: sudo make install
