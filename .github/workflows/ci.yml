@@ -12,8 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt-get install -y automake autoconf libtool
-      - run: |
-          chmod +x "${GITHUB_WORKSPACE}/configure"
-          "${GITHUB_WORKSPACE}/configure"
+      - run: ./configure
       - run: make
       - run: sudo make install
