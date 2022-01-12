@@ -26,6 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: brew install automake autoconf glibtool glibtoolize wxwidgets
+      - run: ln -s $(which glibtoolize) /usr/local/bin/libtoolize
       - run: aclocal
       - run: libtoolize
       - run: automake --add-missing
