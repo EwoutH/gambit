@@ -25,10 +25,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - run: brew install automake autoconf glibtool glibtoolize wxwidgets
-      - run: ln -s $(which glibtoolize) /usr/local/bin/libtoolize
+      - run: brew install automake autoconf libtool wxwidgets
       - run: aclocal
-      - run: libtoolize
+      - run: glibtoolize
       - run: automake --add-missing
       - run: autoconf
 
