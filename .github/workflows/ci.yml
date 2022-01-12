@@ -7,11 +7,25 @@ on:
     - cron:  '0 6 1 * *' # Run 1st of every month at 06:00 UTC
 
 jobs:
-  build:
+  linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt-get install -y automake autoconf libtool
+      - run: aclocal
+      - run: libtoolize
+      - run: automake --add-missing
+      - run: autoconf
+
+      - run: ./configure
+      - run: make
+      - run: sudo make install
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: brew install automake autoconf libtool
       - run: aclocal
       - run: libtoolize
       - run: automake --add-missing
