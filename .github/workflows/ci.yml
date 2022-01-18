@@ -57,5 +57,9 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          path: libs/**/*gambit*.exe
+          path: |
+            libs/**/*gambit*.exe
+            contrib/**/*gambit*.exe
+            contrib/**/gambit.exe
           retention-days: 32
+
